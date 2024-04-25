@@ -29,7 +29,7 @@ except Exception as e:
 st.title('E-Commerce Shipping')
 st.markdown('Product Shipment Delivered on time or not?')
 
-st.header("Plant Features")
+st.header("Order Details")
 
 # Reading the CSV dataset
 data = pd.read_csv("your_dataset.csv")  # Replace "your_dataset.csv" with the actual CSV filename
