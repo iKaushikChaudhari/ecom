@@ -1,8 +1,11 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from prediction import predict
+#from prediction import predict
+import pickle
+from sklearn.ensemble import RandomForestClassifier
 
+predict = pickle.load(open("model.pkl", "rb"))
 
 st.title('E-Commerce Shipping')
 st.markdown('Product Shipment Delivered on time or not?')
