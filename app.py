@@ -31,12 +31,6 @@ st.markdown('Product Shipment Delivered on time or not?')
 
 st.header("Order Details")
 
-# Reading the CSV dataset
-data = pd.read_csv("your_dataset.csv")  # Replace "your_dataset.csv" with the actual CSV filename
-
-# Displaying the first few rows of the dataset
-st.write("Sample Data:", data.head())
-
 # Getting the input data from the user
 col1, col2, col3 = st.columns(3)
 
