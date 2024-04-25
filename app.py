@@ -46,7 +46,7 @@ Time_YN = ''
 if predict and st.button('Reached.on.Time_Y.N'):
 
     user_input = [Cost_of_the_Product,Customer_care_calls,Customer_rating,Prior_purchases ,Product_importance,Discount_offered,Weight_in_gms]
-    user_input = [float(x) for x in user_input]
+    #user_input = [float(x) for x in user_input]
 
     Time_YN = predict([user_input])
 
