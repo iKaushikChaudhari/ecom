@@ -1,15 +1,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-#from prediction import predict
 import pickle
 from sklearn.ensemble import RandomForestClassifier
-
-#predict = pickle.load(open("ecom.pkl", "rb"))
-
-
 import os
-
 
 # Get the absolute path to the directory of this script
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -20,12 +14,13 @@ try:
 except FileNotFoundError:
     st.error("Error loading the model: ecom.pkl not found")
     st.stop()
-    
+
 st.title('E-Commerce Shipping')
 st.markdown('Product Shipment Delivered on time or not?')
 
 st.header("Plant Features")
-    # Getting the input data from the user
+
+# Getting the input data from the user
 col1, col2, col3 = st.columns(3)
 
 with col1:
@@ -52,15 +47,20 @@ with col1:
 with col2:
     Mode_of_Shipment_0 = st.text_input('Mode_of_Shipment_0')
 
-
-    # Code for Prediction
+# Code for Prediction
 Time_YN = ''
 
-    # Creating a button for Prediction
-if predict and st.button('Reached.on.Time_Y.N'):
-
-    user_input = [Cost_of_the_Product,Customer_care_calls,Customer_rating,Prior_purchases ,Product_importance,Discount_offered,Weight_in_gms]
-    #user_input = [float(x) for x in user_input]
+# Creating a button for Prediction
+if st.button('Reached.on.Time_Y.N'):
+    user_input = [Cost_of_the_Product, Customer_care_calls, Customer_rating, Prior_purchases,
+                  Product_importance, Discount_offered, Weight_in_gms]
+    
+    # Convert user inputs to float values
+    try:
+        user_input = [float(x) for x in user_input]
+    except ValueError:
+        st.error("Error converting input to float")
+        st.stop()
 
     Time_YN = predict([user_input])
 
@@ -70,5 +70,4 @@ if predict and st.button('Reached.on.Time_Y.N'):
         Time_YN = 'The Product Will Not Reach On Time'
 
 st.success(Time_YN)
-st.markdown(
-    'Created By :- Kaushik Chaudhari')
+st.markdown('Created By :- Kaushik Chaudhari')
