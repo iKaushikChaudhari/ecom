@@ -2,17 +2,25 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-from sklearn.ensemble import RandomForestClassifier
 import os
+from sklearn.ensemble import RandomForestClassifier
 
 # Get the absolute path to the directory of this script
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
+# Construct the absolute path to ecom.pkl
+model_path = os.path.join(dir_path, "ecom.pkl")
+
+# Check if ecom.pkl exists
+if not os.path.exists(model_path):
+    st.error("Error loading the model: ecom.pkl not found")
+    st.stop()
+
 # Load the model using the absolute path
 try:
-    predict = pickle.load(open(os.path.join(dir_path, "ecom.pkl"), "rb"))
-except FileNotFoundError:
-    st.error("Error loading the model: ecom.pkl not found")
+    predict = pickle.load(open(model_path, "rb"))
+except Exception as e:
+    st.error(f"Error loading the model: {e}")
     st.stop()
 
 st.title('E-Commerce Shipping')
