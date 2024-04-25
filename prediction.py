@@ -1,6 +1,11 @@
-import joblib
+import pickle
 
-
-def predict(data):
-    rf = joblib.load("rf_model.sav")
-    return rf.predict(data)
+def predict(user_input):
+    # Load the model using pickle
+    with open("rf_model.pkl", "rb") as f:
+        rf = pickle.load(f)
+    
+    # Make predictions
+    prediction = rf.predict([user_input])
+    
+    return prediction
