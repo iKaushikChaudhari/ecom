@@ -26,7 +26,7 @@ except Exception as e:
 st.title('E-Commerce Shipping')
 st.markdown('Product Shipment Delivered on time or not?')
 
-st.header("Order Details")
+st.header("Plant Features")
 
 # Getting the input data from the user
 col1, col2, col3 = st.columns(3)
@@ -63,13 +63,6 @@ if st.button('Reached.on.Time_Y.N'):
     user_input = [Cost_of_the_Product, Customer_care_calls, Customer_rating, Prior_purchases,
                   Product_importance, Discount_offered, Weight_in_gms]
     
-    # Convert user inputs to float values
-    try:
-        user_input = [float(x) for x in user_input]
-    except ValueError:
-        st.error("Error converting input to float")
-        st.stop()
-
     Time_YN = predict([user_input])
 
     if Time_YN[0] == 1:
