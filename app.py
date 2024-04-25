@@ -5,6 +5,9 @@ import pickle
 import os
 from sklearn.ensemble import RandomForestClassifier
 
+# Print the current working directory
+print("Current directory:", os.getcwd())
+
 # Get the absolute path to the directory of this script
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
