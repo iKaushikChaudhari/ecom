@@ -26,7 +26,7 @@ except Exception as e:
 st.title('E-Commerce Shipping')
 st.markdown('Product Shipment Delivered on time or not?')
 
-st.header("Plant Features")
+st.header("Order Details")
 
 # Getting the input data from the user
 col1, col2, col3 = st.columns(3)
