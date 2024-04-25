@@ -5,8 +5,22 @@ import numpy as np
 import pickle
 from sklearn.ensemble import RandomForestClassifier
 
-predict = pickle.load(open("ecom.pkl", "rb"))
+#predict = pickle.load(open("ecom.pkl", "rb"))
 
+
+import os
+
+
+# Get the absolute path to the directory of this script
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+# Load the model using the absolute path
+try:
+    predict = pickle.load(open(os.path.join(dir_path, "ecom.pkl"), "rb"))
+except FileNotFoundError:
+    st.error("Error loading the model: ecom.pkl not found")
+    st.stop()
+    
 st.title('E-Commerce Shipping')
 st.markdown('Product Shipment Delivered on time or not?')
 
