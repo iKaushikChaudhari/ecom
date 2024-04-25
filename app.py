@@ -5,7 +5,7 @@ import numpy as np
 import pickle
 from sklearn.ensemble import RandomForestClassifier
 
-predict = pickle.load(open("model.pkl", "rb"))
+predict = pickle.load(open("ecom.pkl", "rb"))
 
 st.title('E-Commerce Shipping')
 st.markdown('Product Shipment Delivered on time or not?')
