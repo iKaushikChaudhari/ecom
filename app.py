@@ -29,44 +29,41 @@ except Exception as e:
 st.title('E-Commerce Shipping')
 st.markdown('Product Shipment Delivered on time or not?')
 
-st.header("Plant Features")
+st.header("Order Details")
 
 # Getting the input data from the user
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    Customer_care_calls = st.text_input('Customer_care_calls')
+    Customer_care_calls = st.selectbox('Customer_care_calls', data['Customer_care_calls'].unique())
 
 with col2:
-    Customer_rating = st.text_input('Customer_rating')
+    Customer_rating = st.selectbox('Customer_rating', data['Customer_rating'].unique())
 
 with col3:
-    Cost_of_the_Product = st.text_input('Cost_of_the_Product')
+    Cost_of_the_Product = st.selectbox('Cost_of_the_Product', data['Cost_of_the_Product'].unique())
 
 with col1:
-    Prior_purchases = st.text_input('Prior_purchases')
+    Prior_purchases = st.selectbox('Prior_purchases', data['Prior_purchases'].unique())
 
 with col2:
-    Product_importance = st.text_input('Product_importance')
+    Product_importance = st.selectbox('Product_importance', data['Product_importance'].unique())
 
 with col3:
-    Discount_offered = st.text_input('Discount_offered')
+    Discount_offered = st.selectbox('Discount_offered', data['Discount_offered'].unique())
 
 with col1:
-    Weight_in_gms = st.text_input('Weight_in_gms')
-
-with col2:
-    Mode_of_Shipment_0 = st.text_input('Mode_of_Shipment_0')
+    Weight_in_gms = st.selectbox('Weight_in_gms', data['Weight_in_gms'].unique())
 
 # Code for Prediction
 Time_YN = ''
 
 # Creating a button for Prediction
-if st.button('Reached.on.Time_Y.N'):
-    user_input = [Cost_of_the_Product, Customer_care_calls, Customer_rating, Prior_purchases,
-                  Product_importance, Discount_offered, Weight_in_gms]
+if st.button('Predict'):
+    user_input = [[Customer_care_calls, Customer_rating, Cost_of_the_Product, Prior_purchases,
+                  Product_importance, Discount_offered, Weight_in_gms]]
     
-    Time_YN = predict([user_input])
+    Time_YN = predict(user_input)
 
     if Time_YN[0] == 1:
         Time_YN = 'The Product Will Reach On Time'
